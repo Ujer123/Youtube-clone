@@ -58,6 +58,35 @@ body{
   margin-top: -5px !important;
 }
 
+.sub-but{
+  margin-left: 10px !important;
+  border-radius: 20px !important;
+  background-color: white !important;
+  color: black !important;
+  text-transform: capitalize !important;
+}
+
+.join-but{
+  background-color: rgb(60, 58, 58) !important;
+  border-radius: 20px !important;
+  margin-left: 40px !important;
+  text-transform: capitalize !important;
+}
+
+.play-container{
+  display: flex;
+}
+
+
+
+@media only screen and (max-width: 768px){
+
+  .play-container{
+    display: block !important;
+  }
+
+}
+
 
 @media only screen and (max-width: 600px){
 

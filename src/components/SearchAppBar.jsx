@@ -130,6 +130,7 @@ export default function SearchAppBar({setCategory}) {
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const{check, setCheck} = React.useContext(counterContext);
+  const { searchQuery, setSearchQuery } = React.useContext(counterContext);
   const [open, setOpen] = React.useState(false);
   const [selectedValue, setSelectedValue] = React.useState(emails[1]);
   const [isPersonIcon, setIsPersonIcon] = React.useState(false);
@@ -195,6 +196,8 @@ export default function SearchAppBar({setCategory}) {
             <StyledInputBase
               placeholder="Search…"
               inputProps={{ 'aria-label': 'search' }}
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
             />
           </Search>
           <FaRegBell className='text-xl absolute right-10 sm:right-20 sm:text-2xl'/>

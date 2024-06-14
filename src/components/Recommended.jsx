@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import moment from 'moment';
 
 const Recommended = ({ categoryId }) => {
 
@@ -9,18 +10,25 @@ const Recommended = ({ categoryId }) => {
     useEffect(() => {
         fetch(relatedVideo_API).then(res => res.json()).then(data => setApiData(data.items))
     }, [])
+
+    const tubevideo = (viewCount) => {
+        return viewCount >= 1000000 ? Math.floor(viewCount / 1000000) + 'M' : Math.floor(viewCount / 1000) + 'K';
+    }
  
     return (
-        <div className="recommended">
+        <div className="recommended text-white mt-20">
             {apiData.map((item,index) => {
                 return (
-                    <div key={index} className="side-video-list">
-                        <Link to={`/video/${item.snippet.categoryId}/${item.id}`} onClick={()=>window.scrollTo(0,0)} className="small-thumbnail">
-                            <img src={item.snippet.thumbnails.medium.url} alt="" /></Link>
-                        <div className="vid-info">
-                            <h4>{item.snippet.title}</h4>
-                            <p>{item.snippet.channelTitle}</p>
-                            <p className='recommended-views'>{item.statistics.viewCount} Views</p>
+                    <div key={index} className="flex mt-1">
+                        <Link to={`/video/${item.snippet.categoryId}/${item.id}`} onClick={()=>window.scrollTo(0,0)} >
+                            <img src={item.snippet.thumbnails.medium.url} alt="" className='max-w-40 rounded-xl'/></Link>
+                        <div className="mx-2">
+                            <h4 className='text-sm'>{item.snippet.title}</h4>
+                            <p className='text-sm text-gray-400'>{item.snippet.channelTitle}</p>
+                            <div className='flex'>
+                            <p className='text-sm text-gray-400'>{tubevideo(item.statistics.viewCount)} views  </p>
+                            <p className='text-sm text-gray-400 ml-3'> &bull; {moment(item.snippet.publishedAt).fromNow()} </p>
+                            </div>
                         </div>
                     </div>)
         })}

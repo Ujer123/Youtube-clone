@@ -11,9 +11,10 @@ import { Link } from 'react-router-dom'
 
 function Home({category}) {
 
-    const [video, setvideo] = useState([])
-    const{check} = useContext(counterContext);
+    const [video, setvideo] = useState([]);
+    const{check, searchQuery} = useContext(counterContext);
     const isMobile = useMediaQuery('(max-width:600px)');
+    const [filteredData, setFilteredData] = useState([]);
 
     useEffect(() => {
       axios.get(`https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=50&regionCode=US&videoCategoryId=${category}&key=AIzaSyBzl7wyCrJN2rHBsn_wqDPJ2h-JNV-eI0U`)
@@ -23,6 +24,14 @@ function Home({category}) {
       })
  
     }, [category])
+
+
+    useEffect(() => {
+      const filtered = video.filter(item => 
+        item.snippet.title.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+      setFilteredData(filtered);
+    }, [searchQuery, video]);
 
 
     const truncateTitle = (title, limit) => {
@@ -35,8 +44,8 @@ function Home({category}) {
     
 
   return (
-    <div  className={`grid grid-cols-2 sm:grid-cols-4 pt-16 ${check ? 'pl-16': 'card-img pl-64 pr-0'}`}>
-      {video.map((item,index) => (
+    <div  className={`grid grid-cols-1 sm:grid-cols-4 pt-16 ${check ? 'pl-16 ': 'card-img pl-64 pr-0'}`}>
+      {filteredData.map((item,index) => (
         
            <Link key={index} to={`video/${item.snippet.categoryId}/${item.id}`} className="card">
 
