@@ -12,7 +12,7 @@ const PlayVideo = ({ videoId, category }) => {
     const [showComments, setShowComments] = useState(!useMediaQuery('(max-width:768px)'));
     const [showFullDescription, setShowFullDescription] = useState(false);
 
-    const API_KEY = 'AIzaSyBzl7wyCrJN2rHBsn_wqDPJ2h-JNV-eI0U'; // Replace with your actual API key
+    const API_KEY = import.meta.env.VITE_API_KEY; 
 
     useEffect(() => {
         const fetchVideoData = async () => {

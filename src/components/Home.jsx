@@ -17,7 +17,7 @@ function Home({category}) {
     const [filteredData, setFilteredData] = useState([]);
 
     useEffect(() => {
-      axios.get(`https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=50&regionCode=US&videoCategoryId=${category}&key=AIzaSyBzl7wyCrJN2rHBsn_wqDPJ2h-JNV-eI0U`)
+      axios.get(`https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=50&regionCode=US&videoCategoryId=${category}&key=${import.meta.env.VITE_API_KEY}`)
       .then(res => {
         setvideo(res.data.items)
         // console.log(res);
@@ -44,7 +44,7 @@ function Home({category}) {
     
 
   return (
-    <div  className={`grid grid-cols-1 sm:grid-cols-4 pt-16 ${check ? 'pl-16 ': 'card-img pl-64 pr-0'}`}>
+    <div  className={`grid grid-cols-1 sm:grid-cols-4 pt-16 ${check ? 'pl-16': 'card-img pl-64 pr-0'}`}>
       {filteredData.map((item,index) => (
         
            <Link key={index} to={`video/${item.snippet.categoryId}/${item.id}`} className="card">

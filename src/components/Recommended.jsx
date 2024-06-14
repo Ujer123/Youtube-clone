@@ -5,7 +5,7 @@ import moment from 'moment';
 const Recommended = ({ categoryId }) => {
 
     const [apiData, setApiData] = useState([]);
-    const relatedVideo_API = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=46&regionCode=US&videoCategoryId=${categoryId}&key=AIzaSyBzl7wyCrJN2rHBsn_wqDPJ2h-JNV-eI0U`;
+    const relatedVideo_API = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=46&regionCode=US&videoCategoryId=${categoryId}&key=${import.meta.env.VITE_API_KEY}`;
 
     useEffect(() => {
         fetch(relatedVideo_API).then(res => res.json()).then(data => setApiData(data.items))
