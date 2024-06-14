@@ -1,0 +1,97 @@
+*{
+  padding: 0;
+  margin: 0;
+}
+
+body{
+  background-color: black;
+}
+
+.search_inp{
+  width: 400px !important;
+  border-radius: 10px !important;
+  margin-left: 400px !important;
+}
+
+.account{
+  position: absolute;
+  right: 10px;
+}
+
+.mic{
+  height: 40px;
+  width: 40px;
+  background-color: rgb(42, 41, 41);
+  border-radius: 50%;
+  padding: 10px;
+  margin-left: 10px;
+}
+
+.small-side{
+  width: 50px;
+  padding-top: 15px;
+  height: 100%;
+}
+
+.small-side h2{
+  font-size: 15px;
+}
+
+.small-side p{
+  display: none;
+}
+
+.small-side li{
+  font-size: 20px;
+  padding: 50;
+  margin: 0;
+}
+
+
+.title-vid{
+  font-weight: 600 !important;
+  font-size: large !important;
+  margin-top: -10px !important;
+}
+
+.chan-na{
+  margin-top: -5px !important;
+}
+
+
+@media only screen and (max-width: 600px){
+
+  .title-dis{
+    position: absolute;
+    font-size: 15px;
+    left: 45px;
+    top: 15px;    
+  }
+
+  .account{
+    right: 0;
+  }
+
+  .search_inp{
+    position: absolute !important;
+    width: 120px !important;
+    margin-left: 150px !important;
+    
+  }
+  .mic{
+    margin-left: 220px !important;
+    
+  }
+
+  .card-mob{
+    width: 160px;
+  }
+
+  .small-mob{
+    width: 150px !important;
+  }
+
+  .card-img{
+    padding-left: 160px !important;
+  }
+}
